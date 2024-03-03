@@ -66,7 +66,7 @@ class PrimaryCategory {
         // Security nonce
         wp_nonce_field( 'save_primary_category', 'primary_category_nonce' );
 
-        //
+        // Get the primary category meta value
         $selected_primary_category = get_post_meta( $post->ID, '_primary_category', true );
         wp_dropdown_categories( array(
             'name'             => 'primary_category',
@@ -104,7 +104,7 @@ class PrimaryCategory {
     {
         // Getting the shortcode's attributes
         $atts = shortcode_atts( array(
-            'category' => '1',
+            'category' => '',
         ), $atts );
 
         // Creating the query arguments

@@ -20,4 +20,4 @@ require_once __DIR__ . '/vendor/autoload.php';
 define( 'PLUGIN_TEMPLATES', plugin_dir_path( __FILE__ ) . 'templates/' );
 
 // Initialize the plugin
-$plugin = (new PrimaryCategoryPlugin\PrimaryCategory())->init();
+(new PrimaryCategoryPlugin\PrimaryCategory())->init();
