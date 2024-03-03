@@ -1,0 +1,20 @@
+# .gitignore file
+
+# Ignoring macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails files
+._*
+
+# Files that might appear on external or thumb drives
+.Spotlight-V100
+.Trashes
+
+# Ignore JetBrains IDEs configuration files
+.idea/
+
+# Windows system files
+Thumbs.db
+Desktop.ini
