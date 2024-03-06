@@ -11,7 +11,7 @@ $posts = $args['posts'];
 <?php else: ?>
 <ul>
     <?php foreach ( $posts as $post ) : ?>
-        <li><a href="<?php echo esc_url( get_permalink( $post->ID ) ); ?>"><?php echo esc_html( get_the_title( $post->ID ) ); ?></a></li>
+        <li class="tw-font-black"><a href="<?php echo esc_url( get_permalink( $post->ID ) ); ?>"><?php echo esc_html( get_the_title( $post->ID ) ); ?></a></li>
     <?php endforeach; ?>
 </ul>
 <?php endif; ?>

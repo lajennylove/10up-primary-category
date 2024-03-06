@@ -17,7 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Define the plugin's templates path
-define( 'PLUGIN_TEMPLATES', plugin_dir_path( __FILE__ ) . 'templates/' );
+define( 'PLUGIN_TEMPLATES',     plugin_dir_path( __FILE__ ) . 'templates/' );
+define( 'PLUGIN_PATH_ASSETS',   plugin_dir_path( __FILE__ ) . 'assets/' );
+define( 'PLUGIN_ASSETS',        plugin_dir_url( __FILE__ )  . 'assets/' );
 
 // Initialize the plugin
 (new PrimaryCategoryPlugin\PrimaryCategory())->init();

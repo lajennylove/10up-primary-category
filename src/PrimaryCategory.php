@@ -35,6 +35,50 @@ class PrimaryCategory {
 
         // Add shortcode to display posts by primary category
         add_shortcode( 'primary_category_posts', array( $this, 'displayPostsByPrimaryCategory' ) );
+
+        // Enqueue assets
+        add_action('wp_enqueue_scripts', array($this, 'enqueueAssets'));
+    }
+
+    /**
+     * Enqueue the built CSS and JS files from Vite
+     *
+     * @return void
+     */
+    public function enqueueAssets(): void
+    {
+        // Get the dist directory
+        $pathDir = PLUGIN_PATH_ASSETS . '/dist';
+        $distDir = PLUGIN_ASSETS . '/dist';
+
+        // Get the manifest file
+        $assetsManifestPath = $pathDir . '/.vite/manifest.json';
+
+        // If the manifest file exists, enqueue the assets
+        if ( file_exists( $assetsManifestPath ) ) {
+
+            // Decode the manifest file
+            $manifest = json_decode( file_get_contents( $assetsManifestPath ), true );
+
+            // Loop through the manifest and enqueue the assets
+            foreach ( $manifest as $key => $value ) {
+
+                // Get the file URL
+                $fileUrl = $distDir . $value['file'];
+
+                // Enqueue CSS files
+                if ( isset( $value['css'] ) ) {
+                    foreach ( $value['css'] as $cssFile ) {
+                        wp_enqueue_style( 'plugin-style-' . $key, $distDir . $cssFile );
+                    }
+                }
+
+                // Enqueue JS files
+                if ( substr( $value['file'], -3 ) === '.js' ) {
+                    wp_enqueue_script( 'plugin-script-' . $key, $fileUrl, array(), null, true );
+                }
+            }
+        }
     }
 
     /**
